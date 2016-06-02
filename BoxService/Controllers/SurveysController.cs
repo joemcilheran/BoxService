@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BoxService.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BoxService.Controllers
 {
@@ -46,13 +47,62 @@ namespace BoxService.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SurveyID,Question1,Question2,Question3,Question4,UserID")] Survey survey)
+        public ActionResult Create([Bind(Include = "SurveyID,Question1,Question2")] Survey survey)
         {
             if (ModelState.IsValid)
             {
                 db.Surveys.Add(survey);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                if((int)survey.Question1 == 0 && (int)survey.Question2 == 0)
+                {
+                    Box box1 = new Box();
+                    box1.Name = "Box of Terrible Beers";
+                    box1.Description = "We will box up 30 of the most terrible beers we can lay our hands on for your drinking displeasure!";
+                    box1.Price = 35.99;
+                    var ID = User.Identity.GetUserId();
+                    var user = db.Users.Find(ID);
+                    user.BoxId = box1.BoxID;
+                    user.BoxPrice = box1.Price;
+                    return RedirectToAction("Details(box1.BoxID)", "Boxes");
+                }
+                else if((int)survey.Question1 == 1 && (int)survey.Question2 == 0)
+                {
+                    Box box2 = new Box();
+                    box2.Name = "Box of Terrible Wines";
+                    box2.Description = "We will box up 8 of the most terrible wines we can lay our hands on for your drinking displeasure!";
+                    box2.Price = 55.99;
+                    var ID = User.Identity.GetUserId();
+                    var user = db.Users.Find(ID);
+                    user.BoxId = box2.BoxID;
+                    user.BoxPrice = box2.Price;
+                    return RedirectToAction("Details(box2.BoxID)", "Boxes");
+                }
+                else if((int)survey.Question1 == 0 && (int)survey.Question2 == 1)
+                {
+                    Box box3 = new Box();
+                    box3.Name = "Box of Wonderful Beers";
+                    box3.Description = "We will box up 30 of the most wonderful beers we can lay our hands on for your drinking pleasure!";
+                    box3.Price = 39.99;
+                    var ID = User.Identity.GetUserId();
+                    var user = db.Users.Find(ID);
+                    user.BoxId = box3.BoxID;
+                    user.BoxPrice = box3.Price;
+                    return RedirectToAction("Details(box3.BoxID)", "Boxes");
+                }
+                else
+                {
+                    Box box4 = new Box();
+                    box4.Name = "Box of Wonderful Wines";
+                    box4.Description = "We will box up 8 of the most wonderful wines we can lay our hands on for your drinking   pleasure!";
+                    box4.Price = 59.99;
+                    var ID = User.Identity.GetUserId();
+                    var user = db.Users.Find(ID);
+                    user.BoxId = box4.BoxID;
+                    user.BoxPrice = box4.Price;
+                    return RedirectToAction("Details(box4.BoxID)", "Boxes");
+                }
+               
             }
 
             return View(survey);
@@ -78,7 +128,7 @@ namespace BoxService.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SurveyID,Question1,Question2,Question3,Question4,UserID")] Survey survey)
+        public ActionResult Edit([Bind(Include = "SurveyID,Question1,Question2")] Survey survey)
         {
             if (ModelState.IsValid)
             {

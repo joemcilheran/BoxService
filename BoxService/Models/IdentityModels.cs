@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -9,6 +10,7 @@ namespace BoxService.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -16,6 +18,9 @@ namespace BoxService.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public int? BoxId { get; set; }
+        public double? BoxPrice { get; set; }
+        public Box box { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -31,5 +36,8 @@ namespace BoxService.Models
         }
 
         public System.Data.Entity.DbSet<BoxService.Models.Survey> Surveys { get; set; }
+        public IEnumerable ApplicationUsers { get; internal set; }
+
+        public System.Data.Entity.DbSet<BoxService.Models.Box> Boxes { get; set; }
     }
 }

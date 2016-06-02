@@ -67,6 +67,8 @@ c:\users\joseph a mcilheran\documents\visual studio 2015\Projects\BoxService\Box
 c:\users\joseph a mcilheran\documents\visual studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.csprojResolveAssemblyReference.cache
 c:\users\joseph a mcilheran\documents\visual studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.dll
 c:\users\joseph a mcilheran\documents\visual studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.pdb
-c:\users\joseph a mcilheran\documents\visual studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.Migrations.initial.resources
-c:\users\joseph a mcilheran\documents\visual studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.csproj.GenerateResource.Cache
-c:\users\joseph a mcilheran\documents\visual studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.Migrations.addedSurvey.resources
+C:\Users\Joseph A McIlheran\Documents\Visual Studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.Migrations.round2.resources
+C:\Users\Joseph A McIlheran\Documents\Visual Studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.csproj.GenerateResource.Cache
+C:\Users\Joseph A McIlheran\Documents\Visual Studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.Migrations.changeSurvey.resources
+C:\Users\Joseph A McIlheran\Documents\Visual Studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.Migrations.boxid.resources
+C:\Users\Joseph A McIlheran\Documents\Visual Studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.Migrations.createBox.resources

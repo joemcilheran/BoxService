@@ -7,13 +7,13 @@ namespace BoxService.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addedSurvey : IMigrationMetadata
+    public sealed partial class round2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedSurvey));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(round2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606012255331_addedSurvey"; }
+            get { return "201606021937365_round 2"; }
         }
         
         string IMigrationMetadata.Source

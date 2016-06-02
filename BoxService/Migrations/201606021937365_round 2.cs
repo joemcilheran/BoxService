@@ -3,7 +3,7 @@ namespace BoxService.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class round2 : DbMigration
     {
         public override void Up()
         {
@@ -31,10 +31,23 @@ namespace BoxService.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.Surveys",
+                c => new
+                    {
+                        SurveyID = c.Int(nullable: false, identity: true),
+                        Question1 = c.Int(nullable: false),
+                        Question2 = c.Int(nullable: false),
+                        Question3 = c.Int(nullable: false),
+                        Question4 = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.SurveyID);
+            
+            CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        surveyId = c.Int(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -48,6 +61,8 @@ namespace BoxService.Migrations
                         UserName = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Surveys", t => t.surveyId, cascadeDelete: true)
+                .Index(t => t.surveyId)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
             
             CreateTable(
@@ -79,6 +94,7 @@ namespace BoxService.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUsers", "surveyId", "dbo.Surveys");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
@@ -86,12 +102,14 @@ namespace BoxService.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.AspNetUsers", new[] { "surveyId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Surveys");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
         }
