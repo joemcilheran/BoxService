@@ -72,3 +72,4 @@ C:\Users\Joseph A McIlheran\Documents\Visual Studio 2015\Projects\BoxService\Box
 C:\Users\Joseph A McIlheran\Documents\Visual Studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.Migrations.changeSurvey.resources
 C:\Users\Joseph A McIlheran\Documents\Visual Studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.Migrations.boxid.resources
 C:\Users\Joseph A McIlheran\Documents\Visual Studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.Migrations.createBox.resources
+C:\Users\Joseph A McIlheran\documents\visual studio 2015\Projects\BoxService\BoxService\obj\Debug\BoxService.Migrations.updateusertable.resources

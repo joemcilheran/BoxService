@@ -60,11 +60,14 @@ namespace BoxService.Controllers
                     box1.Name = "Box of Terrible Beers";
                     box1.Description = "We will box up 30 of the most terrible beers we can lay our hands on for your drinking displeasure!";
                     box1.Price = 35.99;
+                    db.Boxes.Add(box1);
+                    db.SaveChanges();
                     var ID = User.Identity.GetUserId();
                     var user = db.Users.Find(ID);
                     user.BoxId = box1.BoxID;
                     user.BoxPrice = box1.Price;
-                    return RedirectToAction("Details(box1.BoxID)", "Boxes");
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "Boxes", new { id = box1.BoxID });
                 }
                 else if((int)survey.Question1 == 1 && (int)survey.Question2 == 0)
                 {
@@ -72,6 +75,8 @@ namespace BoxService.Controllers
                     box2.Name = "Box of Terrible Wines";
                     box2.Description = "We will box up 8 of the most terrible wines we can lay our hands on for your drinking displeasure!";
                     box2.Price = 55.99;
+                    db.Boxes.Add(box2);
+                    db.SaveChanges();
                     var ID = User.Identity.GetUserId();
                     var user = db.Users.Find(ID);
                     user.BoxId = box2.BoxID;
@@ -84,6 +89,8 @@ namespace BoxService.Controllers
                     box3.Name = "Box of Wonderful Beers";
                     box3.Description = "We will box up 30 of the most wonderful beers we can lay our hands on for your drinking pleasure!";
                     box3.Price = 39.99;
+                    db.Boxes.Add(box3);
+                    db.SaveChanges();
                     var ID = User.Identity.GetUserId();
                     var user = db.Users.Find(ID);
                     user.BoxId = box3.BoxID;
@@ -96,6 +103,8 @@ namespace BoxService.Controllers
                     box4.Name = "Box of Wonderful Wines";
                     box4.Description = "We will box up 8 of the most wonderful wines we can lay our hands on for your drinking   pleasure!";
                     box4.Price = 59.99;
+                    db.Boxes.Add(box4);
+                    db.SaveChanges();
                     var ID = User.Identity.GetUserId();
                     var user = db.Users.Find(ID);
                     user.BoxId = box4.BoxID;

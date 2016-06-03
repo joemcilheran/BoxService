@@ -479,6 +479,10 @@ namespace BoxService.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+            //public void AddBoxInfo(int BoxID, double BoxPrice, string UserID)
+            //{
+            //    var user = userManager.FindById(UserID);
+            //}
         }
         #endregion
     }

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BoxService.Models.Box>
 
 @{
-    ViewBag.Title = "Boxes";
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            $@Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => model.Price)
         </th>
         <th></th>
     </tr>
