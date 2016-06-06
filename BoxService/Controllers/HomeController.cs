@@ -15,14 +15,14 @@ namespace BoxService.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Boxes and Boxes: Boxes for Lovers and Haters";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Please Don't Contact Us";
 
             return View();
         }

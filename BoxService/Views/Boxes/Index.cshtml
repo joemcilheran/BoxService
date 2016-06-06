@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BoxService.Models.Box>
+﻿@using System.Collections.Generic;
+@model IEnumerable<BoxService.Models.Box>
 
 @{
     ViewBag.Title = "Index";
@@ -35,9 +36,7 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BoxID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BoxID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BoxID })
+            @Html.ActionLink("Select", "ResetBox", "Boxes", new { id=item.BoxID }, new {color = "yellow" }) |
         </td>
     </tr>
 }

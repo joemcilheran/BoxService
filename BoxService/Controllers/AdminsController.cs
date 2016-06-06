@@ -18,11 +18,11 @@ namespace BoxService.Controllers
         {
             Admin admin = new Admin();
             admin.MonthlyTotal = (from User in db.Users select User.BoxPrice).Sum();
-            admin.NumberOfAccounts = db.Users.Count();
-            admin.PercentTerribleBeers = ((from user in db.Users where user.BoxName.Equals("Box of Terrible Beers") select user).Count() / admin.NumberOfAccounts)*10;
-            admin.PercentWonderfulBeers = ((from user in db.Users where user.BoxName.Equals("Box of Wonderful Beers") select user).Count() / admin.NumberOfAccounts) * 10;
-            admin.PercentTerribleWines = ((from user in db.Users where user.BoxName.Equals("Box of Terrible Wines") select user).Count() / admin.NumberOfAccounts) * 10;
-            admin.PercentWonderfulWines = ((from user in db.Users where user.BoxName.Equals("Box of Wonderful Wines") select user).Count() / admin.NumberOfAccounts) * 10;
+            admin.NumberOfAccounts = (db.Users.Count()) -1;
+            admin.PercentTerribleBeers = Math.Round((Convert.ToDouble((from user in db.Users where user.BoxName.Equals("Box of Terrible Beers") select user).Count()) / Convert.ToDouble(admin.NumberOfAccounts)) * 100);
+            admin.PercentWonderfulBeers = Math.Round((Convert.ToDouble((from user in db.Users where user.BoxName.Equals("Box of Wonderful Beers") select user).Count()) / Convert.ToDouble(admin.NumberOfAccounts)) * 100);
+            admin.PercentTerribleWines = Math.Round((Convert.ToDouble((from user in db.Users where user.BoxName.Equals("Box of Terrible Wines") select user).Count()) / Convert.ToDouble(admin.NumberOfAccounts)) * 100);
+            admin.PercentWonderfulWines = Math.Round((Convert.ToDouble((from user in db.Users where user.BoxName.Equals("Box of Wonderful Wines") select user).Count()) / Convert.ToDouble(admin.NumberOfAccounts)) * 100);
             return View(admin);
         }
 

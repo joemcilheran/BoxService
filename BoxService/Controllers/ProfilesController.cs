@@ -1,4 +1,6 @@
 ﻿using BoxService.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,18 @@ namespace BoxService.Controllers
     public class ProfilesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
         // GET: Profiles
         public ActionResult Index()
         {
@@ -20,7 +34,15 @@ namespace BoxService.Controllers
         public ActionResult ViewProfileDetails(string id)
         {
             var user = db.Users.Find(id);
-            return View(user);
+            var s = UserManager.GetRoles(user.Id);
+            if (s[0].ToString() == "Admin")
+            {
+                return RedirectToAction("ViewStats", "Admins");
+            }
+            else
+            {
+                return View(user);
+            }
         }
         //public ActionResult ViewStats()
         //{

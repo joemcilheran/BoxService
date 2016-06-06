@@ -7,17 +7,30 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BoxService.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BoxService.Controllers
 {
     public class BoxesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        
         // GET: Boxes
         public ActionResult Index()
         {
+            
             return View(db.Boxes.ToList());
+        }
+        public ActionResult ResetBox(string id)
+        {
+            Box box = db.Boxes.Find(id);
+            var ID = User.Identity.GetUserId();
+            var user = db.Users.Find(ID);
+            user.BoxId = box.BoxID;
+            user.BoxName = box.Name;
+            user.BoxPrice = box.Price;
+            db.SaveChanges();
+            return RedirectToAction("Details", "Boxes", new { id = box.BoxID });
         }
 
         // GET: Boxes/Details/5

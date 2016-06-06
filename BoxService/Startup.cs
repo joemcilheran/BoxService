@@ -34,7 +34,7 @@ namespace BoxService
                 //Here we create a Admin super user who will maintain the website                  
 
                 var user = new ApplicationUser();
-                user.UserName = "administrator";
+                
                 user.Email = "administrator@admin.com";
 
                 string userPWD = "Administrator1!";
@@ -49,7 +49,7 @@ namespace BoxService
                 }
             }
 
-            // creating Creating Employee role    
+               
             if (!roleManager.RoleExists("Customer"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();

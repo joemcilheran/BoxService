@@ -24,6 +24,7 @@ namespace BoxService.Controllers
         {
         }
 
+
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
@@ -83,15 +84,7 @@ namespace BoxService.Controllers
                 case SignInStatus.Success:
                     var user = UserManager.FindByEmail(model.Email);
                     var s = UserManager.GetRoles(user.Id);
-                    if (s[0].ToString() == "Admin")
-                    {
-                        return RedirectToAction("ViewStats", "Profiles");
-                    }
-                    else
-                    {
-                        return RedirectToAction("ViewProfileDetails", "Profiles", new { id = user.Id });
-                    }
-                    
+                    return RedirectToAction("ViewProfileDetails", "Profiles", new { id = user.Id });                    
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -165,7 +158,7 @@ namespace BoxService.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -176,15 +169,9 @@ namespace BoxService.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
-                    if (model.UserRoles == "Admin")
-                    {
-                        return RedirectToAction("ViewStats", "Profiles");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Create", "Surveys");
-                    }
+                    await this.UserManager.AddToRoleAsync(user.Id, "Customer");
+                    return RedirectToAction("Create", "Surveys");
+
                 }
                 ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
                                           .ToList(), "Name", "Name");
@@ -472,7 +459,7 @@ namespace BoxService.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("ViewProfileDetails", "Home");
+            return RedirectToAction("ViewProfileDetails", "Profiles");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
@@ -502,6 +489,7 @@ namespace BoxService.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+ 
 
         }
         #endregion

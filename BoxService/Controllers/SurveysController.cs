@@ -83,7 +83,8 @@ namespace BoxService.Controllers
                     user.BoxId = box2.BoxID;
                     user.BoxName = box2.Name;
                     user.BoxPrice = box2.Price;
-                    return RedirectToAction("Details(box2.BoxID)", "Boxes");
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "Boxes", new { id = box2.BoxID });
                 }
                 else if((int)survey.Question1 == 0 && (int)survey.Question2 == 1)
                 {
@@ -98,13 +99,14 @@ namespace BoxService.Controllers
                     user.BoxId = box3.BoxID;
                     user.BoxName = box3.Name;
                     user.BoxPrice = box3.Price;
-                    return RedirectToAction("Details(box3.BoxID)", "Boxes");
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "Boxes", new { id = box3.BoxID });
                 }
                 else
                 {
                     Box box4 = new Box();
                     box4.Name = "Box of Wonderful Wines";
-                    box4.Description = "We will box up 8 of the most wonderful wines we can lay our hands on for your drinking   pleasure!";
+                    box4.Description = "We will box up 8 of the most wonderful wines we can lay our hands on for your drinking pleasure!";
                     box4.Price = 59.99;
                     db.Boxes.Add(box4);
                     db.SaveChanges();
@@ -113,7 +115,8 @@ namespace BoxService.Controllers
                     user.BoxId = box4.BoxID;
                     user.BoxName = box4.Name;
                     user.BoxPrice = box4.Price;
-                    return RedirectToAction("Details(box4.BoxID)", "Boxes");
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "Boxes", new { id = box4.BoxID });
                 }
                
             }

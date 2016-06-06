@@ -14,13 +14,13 @@ namespace BoxService.Models
         public int? NumberOfAccounts { get; set; }
         [Display(Name = "Total Paid Monthly")]
         public double? MonthlyTotal { get; set; }
-        [Display(Name = "Terrible Beers")]
+        [Display(Name = "Customers with Box of Terrible Beers")]
         public double? PercentTerribleBeers { get; set; }
-        [Display(Name = "Wonderful Beers")]
+        [Display(Name = "Customers with Box of Wonderful Beers")]
         public double? PercentWonderfulBeers { get; set; }
-        [Display(Name = "Terrible Wines")]
+        [Display(Name = "Customers with Box of Terrible Wines")]
         public double? PercentTerribleWines { get; set; }
-        [Display(Name = "Wonderful Wines")]
+        [Display(Name = "Customers with Box of Wonderful Wines")]
         public double? PercentWonderfulWines { get; set; }
     }
 }
