@@ -1,0 +1,66 @@
+﻿@model BoxService.Models.Admin
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Cutomer Statistics</h2>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfAccounts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfAccounts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthlyTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonthlyTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PercentTerribleBeers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PercentTerribleBeers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PercentWonderfulBeers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PercentWonderfulBeers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PercentTerribleWines)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PercentTerribleWines)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PercentWonderfulWines)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PercentWonderfulWines)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

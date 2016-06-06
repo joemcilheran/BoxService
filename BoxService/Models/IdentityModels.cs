@@ -43,5 +43,7 @@ namespace BoxService.Models
         public IEnumerable ApplicationUsers { get; internal set; }
 
         public System.Data.Entity.DbSet<BoxService.Models.Box> Boxes { get; set; }
+
+        public System.Data.Entity.DbSet<BoxService.Models.Admin> Admins { get; set; }
     }
 }

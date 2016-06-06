@@ -3,10 +3,21 @@ namespace BoxService.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class round2 : DbMigration
+    public partial class reinitialize : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Boxes",
+                c => new
+                    {
+                        BoxID = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Description = c.String(),
+                        Price = c.Double(nullable: false),
+                    })
+                .PrimaryKey(t => t.BoxID);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -37,8 +48,6 @@ namespace BoxService.Migrations
                         SurveyID = c.Int(nullable: false, identity: true),
                         Question1 = c.Int(nullable: false),
                         Question2 = c.Int(nullable: false),
-                        Question3 = c.Int(nullable: false),
-                        Question4 = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.SurveyID);
             
@@ -47,7 +56,9 @@ namespace BoxService.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        surveyId = c.Int(nullable: false),
+                        BoxId = c.Int(),
+                        BoxPrice = c.Double(),
+                        BoxName = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -61,8 +72,8 @@ namespace BoxService.Migrations
                         UserName = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Surveys", t => t.surveyId, cascadeDelete: true)
-                .Index(t => t.surveyId)
+                .ForeignKey("dbo.Boxes", t => t.BoxId)
+                .Index(t => t.BoxId)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
             
             CreateTable(
@@ -94,15 +105,15 @@ namespace BoxService.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUsers", "surveyId", "dbo.Surveys");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUsers", "BoxId", "dbo.Boxes");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUsers", new[] { "surveyId" });
+            DropIndex("dbo.AspNetUsers", new[] { "BoxId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
@@ -112,6 +123,7 @@ namespace BoxService.Migrations
             DropTable("dbo.Surveys");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Boxes");
         }
     }
 }

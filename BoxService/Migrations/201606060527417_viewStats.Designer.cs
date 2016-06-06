@@ -7,13 +7,13 @@ namespace BoxService.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class updateusertable : IMigrationMetadata
+    public sealed partial class viewStats : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updateusertable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(viewStats));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606031612392_update-usertable"; }
+            get { return "201606060527417_viewStats"; }
         }
         
         string IMigrationMetadata.Source

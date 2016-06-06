@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BoxService.Models.Admin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfAccounts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthlyTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PercentTerribleBeers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PercentWonderfulBeers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PercentTerribleWines)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PercentWonderfulWines)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfAccounts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlyTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PercentTerribleBeers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PercentWonderfulBeers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PercentTerribleWines)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PercentWonderfulWines)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

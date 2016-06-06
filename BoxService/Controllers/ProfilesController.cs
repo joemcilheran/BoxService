@@ -22,6 +22,10 @@ namespace BoxService.Controllers
             var user = db.Users.Find(id);
             return View(user);
         }
+        //public ActionResult ViewStats()
+        //{
+
+        //}
 
         // GET: Profiles/Create
         public ActionResult Create()

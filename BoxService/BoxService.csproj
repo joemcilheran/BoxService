@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\BoxesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -176,40 +177,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606021937365_round 2.cs" />
-    <Compile Include="Migrations\201606021937365_round 2.Designer.cs">
-      <DependentUpon>201606021937365_round 2.cs</DependentUpon>
+    <Compile Include="Migrations\201606060355365_reinitialize.cs" />
+    <Compile Include="Migrations\201606060355365_reinitialize.Designer.cs">
+      <DependentUpon>201606060355365_reinitialize.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606022123587_changeSurvey.cs" />
-    <Compile Include="Migrations\201606022123587_changeSurvey.Designer.cs">
-      <DependentUpon>201606022123587_changeSurvey.cs</DependentUpon>
+    <Compile Include="Migrations\201606060444124_admin.cs" />
+    <Compile Include="Migrations\201606060444124_admin.Designer.cs">
+      <DependentUpon>201606060444124_admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606022126403_boxid.cs" />
-    <Compile Include="Migrations\201606022126403_boxid.Designer.cs">
-      <DependentUpon>201606022126403_boxid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606022255550_createBox.cs" />
-    <Compile Include="Migrations\201606022255550_createBox.Designer.cs">
-      <DependentUpon>201606022255550_createBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606031612392_update-usertable.cs" />
-    <Compile Include="Migrations\201606031612392_update-usertable.Designer.cs">
-      <DependentUpon>201606031612392_update-usertable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606031710215_profile.cs" />
-    <Compile Include="Migrations\201606031710215_profile.Designer.cs">
-      <DependentUpon>201606031710215_profile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606031933596_JustInCase.cs" />
-    <Compile Include="Migrations\201606031933596_JustInCase.Designer.cs">
-      <DependentUpon>201606031933596_JustInCase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606032036245_anotherOne.cs" />
-    <Compile Include="Migrations\201606032036245_anotherOne.Designer.cs">
-      <DependentUpon>201606032036245_anotherOne.cs</DependentUpon>
+    <Compile Include="Migrations\201606060527417_viewStats.cs" />
+    <Compile Include="Migrations\201606060527417_viewStats.Designer.cs">
+      <DependentUpon>201606060527417_viewStats.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Box.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -283,6 +265,12 @@
     <Content Include="Views\Boxes\Edit.cshtml" />
     <Content Include="Views\Boxes\Index.cshtml" />
     <Content Include="Views\Profiles\ViewProfileDetails.cshtml" />
+    <Content Include="Views\Admins\Create.cshtml" />
+    <Content Include="Views\Admins\Delete.cshtml" />
+    <Content Include="Views\Admins\Details.cshtml" />
+    <Content Include="Views\Admins\Edit.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Admins\ViewStats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,29 +284,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606021937365_round 2.resx">
-      <DependentUpon>201606021937365_round 2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606060355365_reinitialize.resx">
+      <DependentUpon>201606060355365_reinitialize.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606022123587_changeSurvey.resx">
-      <DependentUpon>201606022123587_changeSurvey.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606060444124_admin.resx">
+      <DependentUpon>201606060444124_admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606022126403_boxid.resx">
-      <DependentUpon>201606022126403_boxid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606022255550_createBox.resx">
-      <DependentUpon>201606022255550_createBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606031612392_update-usertable.resx">
-      <DependentUpon>201606031612392_update-usertable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606031710215_profile.resx">
-      <DependentUpon>201606031710215_profile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606031933596_JustInCase.resx">
-      <DependentUpon>201606031933596_JustInCase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606032036245_anotherOne.resx">
-      <DependentUpon>201606032036245_anotherOne.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606060527417_viewStats.resx">
+      <DependentUpon>201606060527417_viewStats.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
