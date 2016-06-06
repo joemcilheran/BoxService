@@ -79,7 +79,8 @@ namespace BoxService.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    var user = UserManager.FindByEmail(model.Email);
+                    return RedirectToAction("ViewProfileDetails", "Profiles", new { id = user.Id });
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -449,7 +450,7 @@ namespace BoxService.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ViewProfileDetails", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
@@ -479,10 +480,7 @@ namespace BoxService.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
-            //public void AddBoxInfo(int BoxID, double BoxPrice, string UserID)
-            //{
-            //    var user = userManager.FindById(UserID);
-            //}
+
         }
         #endregion
     }

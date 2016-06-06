@@ -171,6 +171,7 @@
     <Compile Include="Controllers\BoxesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Controllers\SurveysController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,6 +195,18 @@
     <Compile Include="Migrations\201606031612392_update-usertable.cs" />
     <Compile Include="Migrations\201606031612392_update-usertable.Designer.cs">
       <DependentUpon>201606031612392_update-usertable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606031710215_profile.cs" />
+    <Compile Include="Migrations\201606031710215_profile.Designer.cs">
+      <DependentUpon>201606031710215_profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606031933596_JustInCase.cs" />
+    <Compile Include="Migrations\201606031933596_JustInCase.Designer.cs">
+      <DependentUpon>201606031933596_JustInCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606032036245_anotherOne.cs" />
+    <Compile Include="Migrations\201606032036245_anotherOne.Designer.cs">
+      <DependentUpon>201606032036245_anotherOne.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -269,6 +282,7 @@
     <Content Include="Views\Boxes\Details.cshtml" />
     <Content Include="Views\Boxes\Edit.cshtml" />
     <Content Include="Views\Boxes\Index.cshtml" />
+    <Content Include="Views\Profiles\ViewProfileDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,6 +310,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606031612392_update-usertable.resx">
       <DependentUpon>201606031612392_update-usertable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606031710215_profile.resx">
+      <DependentUpon>201606031710215_profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606031933596_JustInCase.resx">
+      <DependentUpon>201606031933596_JustInCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606032036245_anotherOne.resx">
+      <DependentUpon>201606032036245_anotherOne.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,13 +1,14 @@
-﻿@model BoxService.Models.Box
+﻿@using Microsoft.AspNet.Identity
+@model BoxService.Models.Box
 
 @{
     ViewBag.Title = "Here is a box just for you!";
 }
 
-<h2>Details</h2>
+<h2>Here is the box for You!</h2>
 
 <div>
-    <h4>Box</h4>
+    <h4>Box Details</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,6 +38,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BoxID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("View Your Profile","viewProfileDetails", "Profiles", new { id = User.Identity.GetUserId() }, new { color = "yellow" }) |    
 </p>

@@ -65,6 +65,7 @@ namespace BoxService.Controllers
                     var ID = User.Identity.GetUserId();
                     var user = db.Users.Find(ID);
                     user.BoxId = box1.BoxID;
+                    user.BoxName = box1.Name;
                     user.BoxPrice = box1.Price;
                     db.SaveChanges();
                     return RedirectToAction("Details", "Boxes", new { id = box1.BoxID });
@@ -80,6 +81,7 @@ namespace BoxService.Controllers
                     var ID = User.Identity.GetUserId();
                     var user = db.Users.Find(ID);
                     user.BoxId = box2.BoxID;
+                    user.BoxName = box2.Name;
                     user.BoxPrice = box2.Price;
                     return RedirectToAction("Details(box2.BoxID)", "Boxes");
                 }
@@ -94,6 +96,7 @@ namespace BoxService.Controllers
                     var ID = User.Identity.GetUserId();
                     var user = db.Users.Find(ID);
                     user.BoxId = box3.BoxID;
+                    user.BoxName = box3.Name;
                     user.BoxPrice = box3.Price;
                     return RedirectToAction("Details(box3.BoxID)", "Boxes");
                 }
@@ -108,6 +111,7 @@ namespace BoxService.Controllers
                     var ID = User.Identity.GetUserId();
                     var user = db.Users.Find(ID);
                     user.BoxId = box4.BoxID;
+                    user.BoxName = box4.Name;
                     user.BoxPrice = box4.Price;
                     return RedirectToAction("Details(box4.BoxID)", "Boxes");
                 }

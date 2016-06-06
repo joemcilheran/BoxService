@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 
 namespace BoxService.Models
 {
@@ -19,7 +20,10 @@ namespace BoxService.Models
             return userIdentity;
         }
         public int? BoxId { get; set; }
+        [Display(Name = "This is what you owe")]
         public double? BoxPrice { get; set; }
+        [Display(Name = "Name of Your Box")]
+        public string BoxName { get; set; }
         public Box box { get; set; }
     }
 
